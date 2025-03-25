@@ -14,6 +14,6 @@ import java.io.Serializable;
 public class ErrorDetail implements Serializable {
     private static final long serialVersionUID = 4054049738003949216L;
 
-    private String massageError;
+    private String messageError;
 
 }

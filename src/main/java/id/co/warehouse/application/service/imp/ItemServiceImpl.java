@@ -77,7 +77,7 @@ public class ItemServiceImpl implements ItemService {
                 Item item = populateUpdateDataItem(request,(Item) respItm.get());
                 itemRepository.saveAndFlush(item);
                 response.isUpdate();
-                response.setMassage("id item " + request.getId() + " successfully updated");
+                response.setMessage("id item " + request.getId() + " successfully updated");
             }else {
                 throw new ErrorBussinessException(DATA_NOT_FOUND);
             }

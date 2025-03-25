@@ -15,14 +15,14 @@ public class MyBoostExceptionHandler {
     @ExceptionHandler(ErrorBussinessException.class)
     public ResponseEntity<Object> genericExceptionHandler(ErrorBussinessException e) {
         var response =  new ErrorDetail();
-        response.setMassageError(e.getMessage());
+        response.setMessageError(e.getMessage());
         return new ResponseEntity<>(response , HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(GeneralErrorException.class)
     public ResponseEntity<Object> genericExceptionHandler(GeneralErrorException e) {
         var response =  new ErrorDetail();
-        response.setMassageError(e.getMessage());
+        response.setMessageError(e.getMessage());
         return new ResponseEntity<>(response , HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

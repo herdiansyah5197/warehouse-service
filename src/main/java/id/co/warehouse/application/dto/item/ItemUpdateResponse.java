@@ -15,6 +15,6 @@ public class ItemUpdateResponse implements Serializable {
     private String name;
     private int price;
     private boolean isUpdate;
-    private String massage;
+    private String message;
 
 }
