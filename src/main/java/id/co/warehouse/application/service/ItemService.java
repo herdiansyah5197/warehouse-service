@@ -9,7 +9,7 @@ public interface ItemService {
     Item getItemById(Long id);
     SaveItemResponse saveItem(SaveItemRequest saveItemRequest);
     GetListItemResponsePagination getList(GetListItemRequestPagination requestPagination);
-    Item updateItem(ItemUpdateRequest item);
+    ItemUpdateResponse updateItem(ItemUpdateRequest item);
     ItemDeleteResponse deleteItem(Long id);
 
 }

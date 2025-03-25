@@ -13,8 +13,8 @@ public class ItemUpdateRequest implements Serializable {
     private static final long serialVersionUID = -7314409018873692661L;
 
     @NonNull
-    private int id;
+    private Long id;
     private String name;
-    private int price;
+    private Integer price;
 
 }

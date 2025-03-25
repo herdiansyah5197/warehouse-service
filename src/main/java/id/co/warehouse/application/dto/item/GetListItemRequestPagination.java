@@ -13,6 +13,6 @@ import java.io.Serializable;
 @Builder
 public class GetListItemRequestPagination implements Serializable {
     private static final long serialVersionUID = 1881472860301340931L;
-    private Integer pageSize;
-    private Integer pageNumber;
+    private int pageSize;
+    private int pageNumber;
 }

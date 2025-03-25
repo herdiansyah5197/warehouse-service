@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class ItemController {
 
     @Autowired
-    ItemService itemService;
+    private ItemService itemService;
 
     @GetMapping("/getbyid/{id}")
     public Item getItemById(@PathVariable Long id){
@@ -28,7 +28,7 @@ public class ItemController {
     }
 
     @PutMapping("/edit")
-    public Item updateItem(@RequestBody ItemUpdateRequest itemUpdateRequest){
+    public ItemUpdateResponse updateItem(@RequestBody ItemUpdateRequest itemUpdateRequest){
         return itemService.updateItem(itemUpdateRequest);
     }
 

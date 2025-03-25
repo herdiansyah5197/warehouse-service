@@ -15,4 +15,5 @@ public class ItemDeleteResponse implements Serializable {
     private static final long serialVersionUID = -4685900138143822763L;
 
     private boolean isSuccess;
+    private String message;
 }
