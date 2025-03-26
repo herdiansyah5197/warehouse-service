@@ -10,7 +10,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Builder
 public class SaveInventoryRequest implements Serializable {
-    private static final long serialVersionUID = -5736891265159161015L;
+    private static final long serialVersionUID = 2356764568839453669L;
 
     @NotNull
     private Long idItem;

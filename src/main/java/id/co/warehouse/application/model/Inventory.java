@@ -26,7 +26,7 @@ public class Inventory implements Serializable {
     private Item item;
 
     @Column(name = "qty" , nullable = false)
-    private int qty;
+    private Integer qty;
 
     @Column(name = "type", nullable = false)
     private String type;

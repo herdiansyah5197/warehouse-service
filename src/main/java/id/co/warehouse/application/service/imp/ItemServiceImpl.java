@@ -93,10 +93,7 @@ public class ItemServiceImpl implements ItemService {
     public ItemDeleteResponse deleteItem(Long id) {
         ItemDeleteResponse response = ItemDeleteResponse.builder().build();
         try{
-            var respItm = itemRepository.findById(id);
-            if (!respItm.isPresent()) {
-                throw new ErrorBussinessException(MessageConstant.DATA_NOT_FOUND);
-            }
+            validateItemByIdItem(id);
             itemRepository.deleteById(id);
             response.setMessage("id item " + id + " successfully deleted");
             response.setSuccess(true);
@@ -119,6 +116,13 @@ public class ItemServiceImpl implements ItemService {
         item.setName(name);
         item.setPrice(price);
         return item;
+    }
+
+    public void validateItemByIdItem(Long id){
+        var respItm = itemRepository.findById(id);
+        if (!respItm.isPresent()) {
+            throw new ErrorBussinessException(MessageConstant.DATA_NOT_FOUND);
+        }
     }
 
 }

@@ -26,6 +26,6 @@ public class Item implements Serializable {
     private String name;
 
     @Column(name = "price", nullable = false)
-    private int price;
+    private Integer price;
 
 }

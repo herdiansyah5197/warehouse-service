@@ -20,4 +20,6 @@ public interface InventoryService {
     InventoryDeleteResponse deleteInventory(Long id);
     void validateStock(Integer withdrawel, Long idItem);
 
+    Inventory populateNewData(SaveInventoryRequest request);
+
 }

@@ -12,5 +12,6 @@ public interface ItemService {
     GetListItemResponsePagination getList(GetListRequestPagination requestPagination);
     ItemUpdateResponse updateItem(ItemUpdateRequest item);
     ItemDeleteResponse deleteItem(Long id);
+    void validateItemByIdItem(Long id);
 
 }

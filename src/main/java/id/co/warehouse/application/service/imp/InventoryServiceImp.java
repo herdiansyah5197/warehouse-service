@@ -47,9 +47,6 @@ public class InventoryServiceImp implements InventoryService {
             if (!respItm.isPresent()) {
                 throw new ErrorBussinessException(MessageConstant.DATA_NOT_FOUND);
             }
-//            if(saveInventoryRequest.getType().equalsIgnoreCase("W")) {
-//                validateStock(saveInventoryRequest.getQty(), saveInventoryRequest.getIdItem());
-//            }
             inventoryRepository.saveAndFlush(populateNewData(saveInventoryRequest));
             response.setSuccess(true);
         } catch (GeneralErrorException e) {
@@ -65,9 +62,6 @@ public class InventoryServiceImp implements InventoryService {
         try {
             response.setIdItem(id);
             var respItm = itemRepository.findById(id);
-            if (!respItm.isPresent()) {
-                throw new ErrorBussinessException(MessageConstant.DATA_NOT_FOUND);
-            }
             if (respItm.isPresent()) {
                 Item item = (Item) respItm.get();
                 response.setNameItem(item.getName());
@@ -186,7 +180,7 @@ public class InventoryServiceImp implements InventoryService {
         return response;
     }
 
-    protected Inventory populateNewData(SaveInventoryRequest request) {
+    public Inventory populateNewData(SaveInventoryRequest request) {
         Inventory inventory = new Inventory();
         Item item = new Item();
         item.setId(request.getIdItem());

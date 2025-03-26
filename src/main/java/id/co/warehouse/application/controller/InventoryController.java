@@ -35,7 +35,6 @@ public class InventoryController {
         return inventoryService.getlistStock(requestPagination);
     }
 
-
     @PostMapping("/save")
     public SaveInventoryResponse createdUsers(@Valid @RequestBody  SaveInventoryRequest request) {
         return inventoryService.saveInventory(request);
@@ -49,6 +48,5 @@ public class InventoryController {
     public InventoryDeleteResponse deleteInventory(@PathVariable Long id){
         return inventoryService.deleteInventory(id);
     }
-
 
 }
