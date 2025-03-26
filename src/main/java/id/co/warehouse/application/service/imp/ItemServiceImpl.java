@@ -1,5 +1,7 @@
 package id.co.warehouse.application.service.imp;
 
+import id.co.warehouse.application.constant.MessageConstant;
+import id.co.warehouse.application.dto.GetListRequestPagination;
 import id.co.warehouse.application.dto.item.*;
 import id.co.warehouse.application.exception.ErrorBussinessException;
 import id.co.warehouse.application.exception.GeneralErrorException;
@@ -18,8 +20,6 @@ public class ItemServiceImpl implements ItemService {
     @Autowired
     private ItemRepository itemRepository;
 
-    private static final String DATA_NOT_FOUND = "Data Not Found";
-
     @Override
     public Item getItemById(Long id) {
         Item response;
@@ -28,7 +28,7 @@ public class ItemServiceImpl implements ItemService {
             if (respItm.isPresent()) {
                 response = (Item) respItm.get();
             } else {
-                throw new ErrorBussinessException(DATA_NOT_FOUND);
+                throw new ErrorBussinessException(MessageConstant.DATA_NOT_FOUND);
             }
         } catch (GeneralErrorException e) {
             log.error("error get data");
@@ -51,7 +51,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public GetListItemResponsePagination getList(GetListItemRequestPagination requestPagination) {
+    public GetListItemResponsePagination getList(GetListRequestPagination requestPagination) {
         GetListItemResponsePagination response = GetListItemResponsePagination.builder().build();
         try {
             var pageSize = requestPagination.getPageSize();
@@ -76,10 +76,12 @@ public class ItemServiceImpl implements ItemService {
             if (respItm.isPresent()) {
                 Item item = populateUpdateDataItem(request,(Item) respItm.get());
                 itemRepository.saveAndFlush(item);
-                response.isUpdate();
+                response.setName(item.getName());
+                response.setPrice(item.getPrice());
+                response.setUpdate(true);
                 response.setMessage("id item " + request.getId() + " successfully updated");
             }else {
-                throw new ErrorBussinessException(DATA_NOT_FOUND);
+                throw new ErrorBussinessException(MessageConstant.DATA_NOT_FOUND);
             }
         } catch (GeneralErrorException e) {
             throw new GeneralErrorException(e.getMessage());
@@ -93,7 +95,7 @@ public class ItemServiceImpl implements ItemService {
         try{
             var respItm = itemRepository.findById(id);
             if (!respItm.isPresent()) {
-                throw new ErrorBussinessException(DATA_NOT_FOUND);
+                throw new ErrorBussinessException(MessageConstant.DATA_NOT_FOUND);
             }
             itemRepository.deleteById(id);
             response.setMessage("id item " + id + " successfully deleted");

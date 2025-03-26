@@ -6,15 +6,17 @@ import lombok.*;
 import java.io.Serializable;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class SaveInventoryRequest implements Serializable {
-    private static final long serialVersionUID = -5736891265159161015L;
+public class InventoryUpdateRequest implements Serializable {
+
+    private static final long serialVersionUID = 9097767837760255555L;
 
     @NotNull
+    private Long id;
     private Long idItem;
-    private Integer qty;
     private String type;
+    private Integer qty;
 
 }

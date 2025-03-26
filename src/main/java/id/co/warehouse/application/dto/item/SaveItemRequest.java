@@ -1,5 +1,6 @@
 package id.co.warehouse.application.dto.item;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.io.Serializable;
@@ -11,9 +12,9 @@ import java.io.Serializable;
 public class SaveItemRequest implements Serializable {
     private static final long serialVersionUID = -5736891265159161015L;
 
-    @NonNull
+    @NotNull
     private String name;
-    @NonNull
+    @NotNull
     private Integer price;
 
 }
